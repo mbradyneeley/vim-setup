@@ -1,0 +1,198 @@
+" Don't try to be vi compatible
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" TODO: Load plugins here (pathogen or vundle)
+
+call plug#begin('~/.vim/plugged')
+Plug 'LukeGoodsell/nextflow-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+call plug#end()
+
+execute pathogen#infect()
+" vimspell
+" timestamp
+" supertab
+" vim-multiple-cursors
+" nerdcommenter
+" yankring
+" surround
+" vim-snipmate
+" junegunn/rainbow_parenthesis.vim
+" airline
+" youcompleteme
+" minibufexpl and its fork (fholgado)
+" showmarks
+" syntastic
+" TODO: fix command-t
+
+" Turn on syntax highlighting
+syntax enable
+
+" For plugins to load correctly
+filetype plugin indent on
+
+" Leader key
+let mapleader = " "
+
+" TODO: set up omnifunc
+" Set spaces to tabs
+set noexpandtab
+
+" Security
+set modelines=0
+
+" Set up mappings
+set notimeout ttimeout timeoutlen=200
+
+" Set visual bell and get rid of error bell
+set noerrorbells
+set visualbell
+
+"Show relative line numbers and line numbers
+set relativenumber
+set number
+" quickly turn off relative line numbers
+map <leader>nrn :set norelativenumber<CR>
+map <leader>rn :set relativenumber<CR>
+
+" Show file stats
+set ruler
+
+" Whitespace
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Advanced Whitespace
+set nowrap
+set textwidth=129
+set formatoptions=cqrn1
+"set formatoptions=tcqrn1
+set noshiftround
+
+" Keep 3 lines above and below the cursor when scrolling
+set scrolloff=3
+" Makes backspace behave like other editors, allowing it to delete more stuff
+set backspace=indent,eol,start
+" Use % to jump between pairs
+set matchpairs+=<:>
+" Detect many filetpes
+" TODO: get this running
+"runtime! path/to/matchit.vim
+
+" 2/14/19 - REMOVED: tried but interfered with macros
+" On wrapped lines, move down it instead of jumping the whole thing
+"nnoremap j gj
+"nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+
+" use very magic searching (http://vimdoc.sourceforge.net/htmldoc/pattern.html)
+nnoremap / /\v
+vnoremap / /\v
+" highlight search
+set hlsearch
+set incsearch
+" handle upper and lower cases
+set ignorecase
+set smartcase " capital letters = case sensitive
+" show matching parenthesis
+set showmatch
+
+" Visualize tabs, newlines, trailing spaces, and nbsp
+set listchars=tab:▸\ ,eol:¬,trail:@,nbsp:&
+" Toggle tabs and EOL
+map <leader>l :set list!<CR>
+
+" Formatting
+map <leader>gq gqip
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+set term=xterm-256color
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+colorscheme solarized
+
+" Completion
+set wildmenu
+set wildmode=list:longest
+
+" Undo file, uncomment below to be able to undo even after closing and
+" reopening a file
+" set undofile
+
+" Splitting and Windows
+set splitbelow
+set splitright
+" Easier split navigation
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
+" Delete buffer but keep window
+nnoremap <leader>bd :bp\|bd#<CR>
+" Unload buffer but keep window
+nnoremap <leader>bun :bp\|bun#<CR>
+
+" Quickly remove highlighting
+nnoremap <leader>h :noh<CR>
+
+" Switch between previous buffer quickly
+nnoremap <leader><space> :e#<CR>
+
+" Make it so that tab will jump parenthesis
+nnoremap <tab> %
+vnoremap <tab> %
+
+" When focus is lost save the document
+"au FocusLost * :w
+
+" Strip all trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+
+" quickly open .vimrc
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
+
+" Enable mouse
+set mouse=a
+
+" Make Y behave like D and C
+nnoremap Y y$
+
+" Faster escaping
+inoremap jj <Esc>
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Make entering and exiting paste mode easier
+set pastetoggle=<F5>
+
+" When navigating with G, gg, etc. don't always go to start of line
+set nostartofline
+
+" Easier access to commands
+nnoremap <leader>; ;
+nnoremap ; :
