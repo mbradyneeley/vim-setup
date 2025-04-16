@@ -11,6 +11,7 @@ Plug 'LukeGoodsell/nextflow-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+Plug 'mechatroner/rainbow_csv'
 call plug#end()
 
 execute pathogen#infect()
